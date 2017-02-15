@@ -63,7 +63,7 @@ public class RandGenerator {
 				transaction = new Transaction();
 				transaction.setSourceAccount(
 						new Account(sourceBank.getAccounts().get(sourceAccountID), sourceBank.getName()));
-				transaction.setSourceAccount(new Account(destinationBank.getAccounts().get(destinationAccountID),
+				transaction.setDestinationAccount(new Account(destinationBank.getAccounts().get(destinationAccountID),
 						destinationBank.getName()));
 				if (transaction.validateTransaction()) {
 					transaction.setTransactionValue(
@@ -100,6 +100,7 @@ public class RandGenerator {
 
 		try {
 			out.writeStartDocument();
+			out.writeStartElement("transactions");
 			for (long l = 0; l < transactionsNumber; l++) {
 				Transaction transaction = null;
 				do {
@@ -107,7 +108,7 @@ public class RandGenerator {
 					}while (transaction == null);
 				streamWriter(out, transaction);
 			}
-
+			out.writeEndElement();
 			out.writeEndDocument();
 			out.close();
 		} catch (XMLStreamException e) {
@@ -115,9 +116,15 @@ public class RandGenerator {
 		}
 	}
 	
-	
+	/**
+	 * The function writes the transactions over a XMLStreamWriter 
+	 * 
+	 * @param out
+	 * @param transaction
+	 * @throws XMLStreamException
+	 */
 	public static void streamWriter(XMLStreamWriter out, Transaction transaction) throws XMLStreamException{
-		out.writeStartElement("transactions");
+		
 		out.writeStartElement("transaction");
 
 		out.writeStartElement("value");
@@ -129,19 +136,18 @@ public class RandGenerator {
 		out.writeCharacters(transaction.getSourceAccount().getAccountID());
 		out.writeEndElement();
 		out.writeStartElement("bankId");
-		out.writeCharacters(transaction.getSourceAccount().getAccountID());
+		out.writeCharacters(transaction.getSourceAccount().getBankID());
 		out.writeEndElement();
 		out.writeEndElement();
 		out.writeStartElement("destinationAccount");
 		out.writeStartElement("id");
-		out.writeCharacters(transaction.getSourceAccount().getAccountID());
+		out.writeCharacters(transaction.getDestinationAccount().getAccountID());
 		out.writeEndElement();
 		out.writeStartElement("bankId");
-		out.writeCharacters(transaction.getSourceAccount().getAccountID());
+		out.writeCharacters(transaction.getDestinationAccount().getBankID());
 		out.writeEndElement();
 		out.writeEndElement();
 
-		out.writeEndElement();
 		out.writeEndElement();
 	}
 }

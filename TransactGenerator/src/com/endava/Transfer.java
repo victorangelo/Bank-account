@@ -27,6 +27,7 @@ public class Transfer {
 		
 		System.out.println("The total number of transactions is " + numberOfTransactions);
 		RandGenerator.randTransactions(numberOfTransactions, DOMParser.loadDOMtoMap("ListOfBanksAndAccounts.xml"));
+		System.out.println("The process is completed.");
 	}
 
 }

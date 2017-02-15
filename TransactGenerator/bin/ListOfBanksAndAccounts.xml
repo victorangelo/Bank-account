@@ -1,0 +1,16 @@
+<banks>
+	<bank>
+		<name>A01</name>
+		<accounts>
+			<account>A0001</account>
+			<account>A0002</account>
+		</accounts>
+	</bank>	
+	<bank>
+		<name>B01</name>
+		<accounts>
+			<account>B0001</account>
+			<account>B0001</account>
+		</accounts>
+	</bank>
+</banks>

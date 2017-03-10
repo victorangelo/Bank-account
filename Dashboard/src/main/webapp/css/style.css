@@ -1,0 +1,32 @@
+.body_class{
+	background-color: lightblue; align:center;
+	color : #ff8040;
+	font-weight: bold;
+}
+
+.upper_div {
+    width: 30%;
+    margin:0 auto;
+}
+
+div.d_data
+{
+    width:100%;
+    background-color: #0080c0;
+    border: 1px solid black;
+    margin: 0 auto 0 auto;
+    color: white;
+}
+
+.ui-widget-content {
+   background: #ff00ff;
+}
+
+.ui-widget-header {
+   color: Orange;
+   background: #0080c0;
+}
+
+.progress_bar{
+	document.getElementById("progressbar").style.display = 'none';
+}
